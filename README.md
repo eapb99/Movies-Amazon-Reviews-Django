@@ -24,10 +24,10 @@ Para limpiar los datos y poder cargalos a una base de datos usaremos el archivo(
 
 
 ### Filtro por Producto 
-![Filtro por Produto](/images/producto.png)
+![Filtro por Produto](/Datos/images/producto.png)
       
 ### Filtros Generales
-![Filtros Generales](/images/filtrosgenerales.png)
+![Filtros Generales](/Datos/images/filtrosgenerales.png)
 
     
  
