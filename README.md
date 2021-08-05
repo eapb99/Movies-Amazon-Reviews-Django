@@ -7,10 +7,10 @@ El conjunto de datos con el que se trabaja es el Dataset de Amazon movie reviews
 
 ## Como usar el proyecto
 
-Para limpiar los datos y poder cargalos a una base de datos usaremos el archivo(limpieza.py) que se encuentra dentro la carpeta TratamientodeDatos
+Para limpiar los datos y poder cargalos a una base de datos usaremos el archivo(limpieza.py) que se encuentra dentro la carpeta Datos/TratamientodeDatos
 
 
-## Configuraracion del Proyecto en Django
+## Configuracion del Proyecto en Django
 
 1) Instalar todos los requesitos del proyecto, estos se encuentran en el archivo requirements.txt. Para installar usar la sentencia (pip install - r requirements.txt)
 
