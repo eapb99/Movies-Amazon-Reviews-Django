@@ -1,0 +1,42 @@
+{% extends 'list.html' %}
+{% load static %}
+
+{% block extra %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+{% endblock %}
+
+
+{% block javascript %}
+    <script src="{% static 'js/filtros.js' %}"></script>
+    <script>
+
+        $('#id_field').daterangepicker({
+            "locale": {
+                "format": "YYYY-MM-DD"
+            },
+            "startDate": "2000-01-01",
+            "endDate": "2010-01-01",
+            "maxDate": "2012-12-31"
+        }, function (start, end, label) {
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const formData = new FormData()
+
+            formData.append('start', start.format('YYYY-MM-DD'))
+            formData.append('end', end.format('YYYY-MM-DD'))
+            formData.append('csrfmiddlewaretoken', csrftoken)
+            fetch('{{ fetch }}', {
+                method: 'post',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    responseData(data)
+
+                })
+
+        });
+    </script>
+{% endblock %}

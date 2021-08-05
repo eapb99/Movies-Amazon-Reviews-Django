@@ -1,0 +1,23 @@
+{% extends 'list.html' %}
+{% load static %}
+
+
+{% block javascript %}
+    <script src="{% static 'js/filtros.js' %}"></script>
+    <script>
+        $("#myform").submit(function (e) {
+            e.preventDefault();
+            let serializedData = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: "{{ fetch }}",
+                data: serializedData,
+                success: function (data) {
+                    responseData(data)
+
+                }
+
+            })
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends 'body.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.0/dist/chart.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}
+
+{% block title %}
+    <h1>{{ title }}</h1>
+{% endblock %}
+
+
+{% block content %}
+    <div class="row" id="top">
+
+    </div>
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-chart-bar"></i>
+                {{ title }}
+            </h3>
+        </div>
+        <div class="card-body">
+            <form id="myform">
+                <div class="row">
+                    {% csrf_token %}
+                    {% if 'Generales' in title %}
+                        {% for field in form %}
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label> {{ field.label }}</label>
+                                    {{ field }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                {% if 'Usuario' in title %}
+                                    {{ form.field|attr:"placeholder:Ingrese id de Usuario" }}
+                                {% else %}
+                                    {{ form.field|attr:"placeholder:Ingrese id de Producto" }}
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if 'Fechas' not in title %}
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">Aplicar Filtros</button>
+                    </div>
+                {% endif %}
+            </form>
+            <hr>
+            <div class="row">
+
+                <div class="col-md-6">
+                    <h2 class="text-center">10 Mejores Score</h2>
+                    <table class="table table-bordered" id="best" width="100%">
+                        <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col">Ayuda</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Summary</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="text-center">10 Peores Score</h2>
+                    <table class="table table-bordered" id="worst" width="100%">
+                        <thead>
+                        <tr>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Perfil</th>
+                            <th scope="col">Ayuda</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Summary</th>
+                            <th scope="col">Fecha</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <a href="{{ list_url }}" class="btn btn-success btn-flat">
+                <i class="fas fa-sync"></i> Actualizar
+            </a>
+        </div>
+    </div>
+    <div class="row" id="graph">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header ui-sortable-handle" style="cursor: move;">
+                    <h3 class="card-title text-center">
+                        <i class="fas fa-chart-line"></i>
+                        Graficos
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content p-0">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

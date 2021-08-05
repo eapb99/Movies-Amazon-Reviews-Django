@@ -1,0 +1,120 @@
+{% extends 'home.html' %}
+{% load static %}
+
+
+{% block body %}
+    <body class="hold-transition sidebar-mini sidebar-collapse">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-danger navbar-dark">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="/" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{% url 'index' %}" class="nav-link"> <b style="font-size: 1.2rem"> Home</b></a>
+                </li>
+            </ul>
+
+
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar  sidebar-dark-ligth elevation-4">
+            <!-- Brand Logo -->
+            <a class="brand-link">
+                <img src="{% static 'icons/image004.ico' %}"
+                     alt="Tia Logo Logo"
+                     class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light">Dashboard</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="data:image/png;base64,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"
+                             class="img-circle elevation-2"
+                             alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">{{ user.username }}</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        <li class="nav-item">
+                            <a href="{% url 'product' %}" class="nav-link">
+                                <i class="nav-icon far fa-video"></i>
+                                <p>
+                                    Filtro por Productos
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'usuario' %}" class="nav-link">
+                                <i class="nav-icon far fa-users"></i>
+                                <p>
+                                    Filtro por Id de Usuario
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'date' %}" class="nav-link">
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p>
+                                    Filtro por fecha
+                                </p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+
+                <div class="container-fluid">
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2021-1S <a href="https://adminlte.io">AJME</a>.</strong> All rights
+            reserved.
+        </footer>
+
+    </div>
+    {% block javascript %}
+
+    {% endblock %}
+    </body>
+
+{% endblock %}
